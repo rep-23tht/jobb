@@ -29,13 +29,13 @@ jobs:
 
       - name: Replace placeholder in deployment file
         env:
-          DAG_FILE_PATH: target/dags.py
+          DAG_FILE_PATH: dags.py
           NEW_TAG: 111111
         run: |
           ls -al
           cd target/
           git branch
           python update_dag.py
-          cat dag.py
+          cat dags.py
 
              
