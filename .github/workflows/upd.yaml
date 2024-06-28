@@ -30,7 +30,7 @@ jobs:
       - name: Replace placeholder in deployment file
         env:
           DAG_FILE_PATH: dags.py
-          IMAGE_NAME: nginx
+          IMAGE_NAME: yyttg.nginx
           NEW_TAG: 111111
         run: |
           ls -al
