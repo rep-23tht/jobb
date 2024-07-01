@@ -23,7 +23,7 @@ jobs:
       env:
         DAG_FILES: "dags.py,dags1.py,dags2.py"
         IMAGE_NAME: yyttg.nginx
-        NEW_TAG: 7777
+        NEW_TAG: 8888
       run: |
         cd target/
         python update_dag.py
