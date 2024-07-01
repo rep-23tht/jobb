@@ -30,3 +30,14 @@ jobs:
         cat dags.py
         cat dags1.py
         cat dags2.py
+        
+    - name: Push code to github repo
+      run: | 
+        cd target
+        git branch
+        ls -al
+        git config --global user.email "${{ secrets.EMAIL_ADDRESS_GITHUB }}"
+        git config --global user.name "${{ secrets.COMMIT_GITHUB_USERNAME }}"
+        git add .
+        git commit -m "updated the  tags"
+        git push https://${{ secrets.COMMIT_GITHUB_TOKEN }}@github.com/rep-23tht/dags.git
