@@ -1,0 +1,32 @@
+name: CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+jobs:
+  tags:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Clone the target repository
+      uses: actions/checkout@v4
+      with:
+        repository: rep-23tht/dags
+        token: ${{ secrets.COMMIT_GITHUB_TOKEN }}
+        ref: main
+        path: target
+
+    - name: Replace placeholder in deployment file
+      env:
+        DAG_FILES: "dags.py,dags1.py,dags2.py"
+        IMAGE_NAME: yyttg.nginx
+        NEW_TAG: 555555
+      run: |
+        cd target/
+        python update_dag.py
+        cat dags.py
+        cat dags1.py
+        cat dags2.py
